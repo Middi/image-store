@@ -19,7 +19,7 @@ class NavBar extends Component {
       <header>
         <div className="container-header">
           <div id="logo" className="menuUp">
-                <h1>Logo</h1>
+                <h2>Logo</h2>
                 <div id="navToggle">
                     <a onClick={this.toggleMenu}>&#9776;</a>
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'normalize.css';
 import { Home } from './views/Home';
 import { About } from './views/About';
 import { TopicList } from './views/TopicList';
@@ -9,7 +10,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 export const Routes = () => {
   return (
-    <div>
+    <React.Fragment>
       <NavBar />
       <Switch>
         <Route exact path="/Home" component={Home} />
@@ -22,6 +23,6 @@ export const Routes = () => {
         <Route path="/Topics/:topicId" component={TopicDetail} />
         <Route component={NoMatch} />
       </Switch>
-    </div>
+      </React.Fragment>
   );
 };

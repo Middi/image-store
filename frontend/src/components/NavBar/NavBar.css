@@ -1,11 +1,6 @@
-
-#navToggle {display: none}
-
 header {
-    position: absolute;
     width: 100%;
-    z-index: 10;
-    background-color: white;
+    background-color: grey;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -18,25 +13,14 @@ header {
   margin: 0 auto;
 }
 
-.container {
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-.narrow {
-    max-width: 800px;
-    padding: 0 30px;
+#logo h2 {
+    padding: 14px 15px;
+    margin: 0;
 }
 
-#logo img {
-    line-height: 0;
-    padding: 12px 2px 8px;
-}
 
 nav {
   text-align: right;
-  transform: 300ms all ease;
 }
 
 ul {
@@ -45,14 +29,12 @@ ul {
 }
 
 li {
-  border-bottom: none;
   display: inline-block;
 }
 
 li a {
   padding: 0 1.25rem;
   text-decoration: none;
-  transition: 250ms all ease;
   color: rgba(0, 0, 0, 0.65);
 }
 
@@ -64,6 +46,7 @@ li:hover a {color: rgba(0, 0, 0, 1)}
 #navToggle {
   display: none;
   position: absolute;
+  cursor: pointer;
   right: 0;
   top: 0;
 }
