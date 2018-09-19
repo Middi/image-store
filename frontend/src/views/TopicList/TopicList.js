@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const TopicList = ({ match }) => {
-  console.log(match.url)
+  console.log(match)
   return (
     <div>
       <h3>Topic List View</h3>

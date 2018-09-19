@@ -1,6 +1,133 @@
-.NavBar {
-  background-color: black;
-  font-size: 20px;
-  color: white;
-  height: 70px;
+
+#navToggle {display: none}
+
+header {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+.narrow {
+    max-width: 800px;
+    padding: 0 30px;
+}
+
+#logo img {
+    line-height: 0;
+    padding: 12px 2px 8px;
+}
+
+nav {
+  text-align: right;
+  transform: 300ms all ease;
+}
+
+ul {
+  list-style-type: none;
+  padding: 12px 0;
+}
+
+li {
+  border-bottom: none;
+  display: inline-block;
+}
+
+li a {
+  padding: 0 1.25rem;
+  text-decoration: none;
+  transition: 250ms all ease;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+li:hover a {color: rgba(0, 0, 0, 1)}
+
+
+/* Mobile Toggle */
+
+#navToggle {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 300ms all ease;
+}
+
+#navToggle a {
+  color: lighten(black, 20);
+  display: block;
+  font-size: 2em;
+  font-weight: 200;
+  padding: 10px 12px;
+  line-height: 1em;
+  text-decoration: none;
+  transition: 100ms all ease;
+}
+
+#navToggle:hover a {color: black}
+
+
+
+
+/* Media Queries */
+
+
+@media all and (max-width: 747px) {
+  html {
+      font-size: 14px;
+  }
+  
+  .container-header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  nav {
+      display: none;
+      width: 100%;
+  }
+  ul {
+      padding: 12px 0 80px;
+  }
+  li {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem 0;
+  }
+  li a {
+      font-size: 1.4rem
+  }
+  #navToggle {
+      display: block
+  }
+  .hero {
+      height: 400px
+  }
+  .workshop-content-vid {
+      width: 400px;
+      height: 225px;
+  }
+}
+
+@media all and (max-width: 430px) {
+  .workshop-content-vid {
+      width: 320px;
+      height: 180px;
+  }
 }
