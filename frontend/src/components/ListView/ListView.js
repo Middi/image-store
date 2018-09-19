@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class ListView extends Component {
 
@@ -6,6 +7,7 @@ class ListView extends Component {
   state = {
     loading: true,
     arr: [],
+    image: null
   }
   
   callAPI() {
@@ -17,6 +19,23 @@ class ListView extends Component {
               loading: false
             });
           })
+  }
+
+
+  handleChange( data ) {
+    const image = data[0];
+    this.setState({
+     image,
+     imageName: image.name
+    });
+  }
+
+  submitFile = () => {
+    const data = {image: this.state.imageName}
+    axios.post('http://localhost:5000/image', data)
+    .then(res => {
+      console.log('file response', res);
+    })
   }
   
   componentWillMount() {
@@ -35,6 +54,10 @@ class ListView extends Component {
     
     
       {!this.state.loading ? items : ''}
+
+      <input type="file" name="avatar" onChange={(e) => this.handleChange(e.target.files)} />
+
+      <button onClick={this.submitFile}>Submit</button>
       </div>
   );
     }
