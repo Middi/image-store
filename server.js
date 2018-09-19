@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 const items = require('./backend/routes/items');
+const cors = require('cors');
 const app = express();
+
+
+
+app.use(cors());
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
