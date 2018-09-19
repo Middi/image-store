@@ -1,47 +1,68 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import request from 'superagent';
+
+const CLOUDINARY_CLOUD_NAME = 'middi';
+const CLOUDINARY_UPLOAD_PRESET = 'l4a3iuvn';
+const CLOUDINARY_UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`;
+
 class ListView extends Component {
 
 
   state = {
     loading: true,
     arr: [],
-    image: null
+    uploadedFile: null,
+    uploadedFileCloudinaryUrl: ''
   }
-  
+
   callAPI() {
     fetch('/api/items')
-          .then(res => res.json())
-          .then(res => {
-            this.setState({
-              arr: res,
-              loading: false
-            });
-          })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          arr: res,
+          loading: false
+        });
+      })
   }
 
 
-  handleChange( data ) {
-    const image = data[0];
+
+  handleChange(files) {
     this.setState({
-     image,
-     imageName: image.name
+      uploadedFile: files[0]
+    });
+}
+
+  submitFile = () => {
+
+    const file = this.state.uploadedFile;
+
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+    .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      .field('file', file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+
+        // TODO Send request and store in database
+      }
     });
   }
 
-  submitFile = () => {
-    const data = {image: this.state.imageName}
-    axios.post('http://localhost:5000/image', data)
-    .then(res => {
-      console.log('file response', res);
-    })
-  }
-  
   componentWillMount() {
-      this.callAPI();
+    this.callAPI();
   }
-  
+
 
   render() {
 
@@ -49,18 +70,19 @@ class ListView extends Component {
       <p stuff={item} key={item.id}>{item.name}</p>
     ));
     return (
-    <div>
-      <h1>this is a list view component</h1>
-    
-    
-      {!this.state.loading ? items : ''}
+      <div>
+        <h1>this is a list view component</h1>
 
-      <input type="file" name="avatar" onChange={(e) => this.handleChange(e.target.files)} />
 
-      <button onClick={this.submitFile}>Submit</button>
+        {!this.state.loading ? items : ''}
+
+        <input type="file" multiple={false}
+            accept="image/*" name="image" onChange={(e) => this.handleChange(e.target.files)} />
+
+        <button onClick={this.submitFile}>Submit</button>
       </div>
-  );
-    }
+    );
+  }
 };
 
 export default ListView;
