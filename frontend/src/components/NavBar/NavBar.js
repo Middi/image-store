@@ -5,23 +5,28 @@ import './NavBar.css';
 
 class NavBar extends Component {
 
-  toggleMenu = () => {
-    alert('le')
+  toggleMenu = (e) => {
+    
+    const nav = document.querySelector('nav');
+
+      e.preventDefault();
+          nav.classList.toggle('mobile-open');
+          document.querySelector('#navToggle').classList.toggle('open');
   }
 
   render() {
     return (
       <header>
         <div className="container-header">
-
-            <div id="logo" className="menuUp">
-                <h1>LOGO</h1>
+          <div id="logo" className="menuUp">
+                <h1>Logo</h1>
                 <div id="navToggle">
                     <a onClick={this.toggleMenu}>&#9776;</a>
                 </div>
             </div>
 
-            <nav>
+
+            <nav className="nav">
                 <ul>
                     <li>
                       <Link to="/Home">Home</Link>
@@ -34,7 +39,7 @@ class NavBar extends Component {
                     </li>
                 </ul>
             </nav>
-        </div>
+          </div>
       </header>
     );
   }
