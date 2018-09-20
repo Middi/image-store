@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 export const Routes = () => {
   return (
     <React.Fragment>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/About" component={About} />

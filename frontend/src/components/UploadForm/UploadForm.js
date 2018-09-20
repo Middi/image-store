@@ -63,16 +63,22 @@ class UploadForm extends Component {
               <div className="form">
                 <input type="text" name="title" className="form-input title" id="title" placeholder="Title" />
                 <textarea name="description" className="description" id="description" placeholder="Description"></textarea>
-                <input
-                  type="file"
-                  multiple={false}
-                  accept="image/*"
-                  name="image"
-                  className="upload-image"
-                  onChange={e => this.handleChange(e.target.files)}
-                />
+                  <div className="button-container">
+                    <div className="upload-btn-wrapper">
+                      <button className="button">Select an Image</button>
 
-                <button className="button" onClick={this.submitFile}>Upload</button>
+                      <input
+                        type="file"
+                        multiple={false}
+                        accept="image/*"
+                        name="image"
+                        className="upload-image"
+                        onChange={e => this.handleChange(e.target.files)}
+                      />
+                    </div>
+
+                    <button className="button btn-submit" onClick={this.submitFile}>Upload</button>
+                  </div>
               </div>
             </div>
             <div className="form-container-right">
