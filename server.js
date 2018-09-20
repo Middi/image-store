@@ -49,7 +49,7 @@ app.use('/api/items', items);
 
 
 // CREATE - Add new image to database
-app.post('/image', (req, res) => {
+app.post('/upload', (req, res) => {
 	const newImage = new Image({
         image: req.body.data
     });

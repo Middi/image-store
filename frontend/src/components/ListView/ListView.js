@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import keys from '../../keys';
-import axios from 'axios';
-
 import request from 'superagent';
 
-const CLOUDINARY_UPLOAD_PRESET = keys.CLOUDINARY_UPLOAD_PRESET;
-const CLOUDINARY_UPLOAD_URL = keys.CLOUDINARY_UPLOAD_URL;
+let {CLOUDINARY_PRESET, CLOUDINARY_URL } = keys;
+
 class ListView extends Component {
 
 
@@ -49,8 +47,8 @@ class ListView extends Component {
 
     const file = this.state.uploadedFile;
 
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-      .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    let upload = request.post(CLOUDINARY_URL)
+      .field('upload_preset', CLOUDINARY_PRESET)
       .field('file', file);
 
     upload.end((err, response) => {
