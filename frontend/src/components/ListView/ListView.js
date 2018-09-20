@@ -27,6 +27,18 @@ class ListView extends Component {
       })
   }
 
+  post(data) {
+    const url = {data}
+    console.log(url)
+    fetch('/image', {
+      method: 'post',
+      headers: new Headers({
+          'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(url)
+  })
+  }
+
   handleChange(files) {
     this.setState({
       uploadedFile: files[0]
@@ -51,6 +63,7 @@ class ListView extends Component {
           uploadedFileCloudinaryUrl: response.body.secure_url
         });
 
+        this.post(this.state.uploadedFileCloudinaryUrl);
         // TODO Send request and store in database
       }
     });

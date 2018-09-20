@@ -48,16 +48,10 @@ app.use('/api/items', items);
 
 
 
-// CREATE - Add new contact to database
+// CREATE - Add new image to database
 app.post('/image', (req, res) => {
-
-	
-	console.log('================================');
-	console.log(req.body);
-	console.log('================================');
-
 	const newImage = new Image({
-        image: req.body.image
+        image: req.body.data
     });
     newImage.save().then(image => res.json(image));
 });
