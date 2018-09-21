@@ -4,9 +4,14 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const ImageSchema = new Schema({
+    title: {
+        type: String
+    },
+    description: {
+        type: String
+    },
     image: {
-        type: String,
-        required: true
+        type: String
     }
 });
 

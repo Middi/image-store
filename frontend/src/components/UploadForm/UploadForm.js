@@ -2,35 +2,42 @@ import React, { Component } from "react";
 import keys from "../../keys";
 import request from "superagent";
 import "./UploadForm.css";
-import placeholder from "./img/placeholder.png";
 
 let { CLOUDINARY_PRESET, CLOUDINARY_URL } = keys;
 
 class UploadForm extends Component {
   state = {
+    title: '',
+    description: '',
     fileToUpload: null,
     uploadedFileUrl: null
   };
 
   post(data) {
-    const url = { data };
     fetch("/upload", {
       method: "post",
       headers: new Headers({
         "Content-Type": "application/json"
       }),
-      body: JSON.stringify(url)
+      body: JSON.stringify(data)
     });
   }
 
-  handleChange(files) {
-    this.setState({
-      fileToUpload: files[0]
-    });
+  handleChange = e => {
+    // Spread state into new variable
+    const NS = {...this.state};
+    // Check if its the file upload or normal input
+    if(e.files) {
+      NS.fileToUpload = e.files[0]
+    }
+    else {
+      NS[e.name] = e.value;
+    }
+    // Set state with new version of state
+    this.setState(NS);
   }
 
   submitFile = () => {
-    console.log('submit file')
     const file = this.state.fileToUpload;
 
     let upload = request
@@ -45,10 +52,17 @@ class UploadForm extends Component {
 
       if (response.body.secure_url) {
         this.setState({
-          uploadedFileUrl: response.body.secure_url
+          uploadedFileUrl: response.body.secure_url,
+          image: response.body.secure_url
         });
 
-        this.post(this.state.uploadedFileUrl);
+        // Prepare data for post to database
+        const data = {...this.state};
+        delete data.fileToUpload;
+        delete data.uploadedFileUrl;
+        
+        // Send to database
+        this.post(data);
       }
     });
   };
@@ -62,8 +76,10 @@ class UploadForm extends Component {
             <div className="form-container-left">
               <h1 className="h1-title">Upload</h1>
               <div className="form">
-                <input type="text" name="title" className="form-input title" id="title" placeholder="Title" />
-                <textarea name="description" className="description" id="description" placeholder="Description"></textarea>
+
+                <input type="text" name="title" onChange={e => this.handleChange(e.target)} className="form-input title" id="title" placeholder="Title" value={this.state.title} />
+                <textarea name="description"  onChange={e => this.handleChange(e.target)}  className="description" id="description" placeholder="Description" value={this.state.description}></textarea>
+                  
                   <div className="button-container">
                     <div className="upload-btn-wrapper">
                       <button className="button">Select an Image</button>
@@ -74,7 +90,7 @@ class UploadForm extends Component {
                         accept="image/*"
                         name="image"
                         className="upload-image"
-                        onChange={e => this.handleChange(e.target.files)}
+                        onChange={e => this.handleChange(e.target)}
                       />
                     </div>
 

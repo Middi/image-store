@@ -51,7 +51,9 @@ app.use('/api/items', items);
 // CREATE - Add new image to database
 app.post('/upload', (req, res) => {
 	const newImage = new Image({
-        image: req.body.data
+		image: req.body.image,
+		title: req.body.title,
+		description: req.body.description
     });
     newImage.save().then(image => res.json(image));
 });
