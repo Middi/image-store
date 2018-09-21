@@ -20,8 +20,10 @@ export default class Home extends React.Component {
       <React.Fragment>
         {this.state.modalIsOpen && <UploadForm closeModal={this.handleModal} />}
         <button onClick={this.handleModal}>Upload Image</button>
-
+        <div className="container">
+        
         <ListView />
+        </div>
       </React.Fragment>
     );
   };

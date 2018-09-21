@@ -6,7 +6,7 @@ const Image = require('../models/image');
 
 router.get('/', (req, res) => {
     Image.find()
-        .sort({ date: 1 })
+        .sort({ date: -1 })
         .then(items => res.json(items))
 });
 
