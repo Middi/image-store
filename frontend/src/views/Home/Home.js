@@ -2,11 +2,24 @@ import React from 'react';
 import './Home.css';
 import { UploadForm } from '../../components/UploadForm';
 
-const Home = props => {
-  console.log(props);
-  return (
-      <UploadForm />
-  );
-};
+export default class Home extends React.Component {
 
-export default Home;
+  state = {
+    modalIsOpen: false
+  }
+
+  handleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    })
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        {this.state.modalIsOpen && <UploadForm closeModal={this.handleModal} />}
+        <button onClick={this.handleModal}>Upload Image</button>
+      </React.Fragment>
+    );
+  };
+}

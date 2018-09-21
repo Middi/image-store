@@ -57,6 +57,7 @@ class UploadForm extends Component {
     return (
       <div className="modal-bg">
         <div className="modal">
+          <span onClick={this.props.closeModal} className="modal-close">+</span>
           <div className="form-container">
             <div className="form-container-left">
               <h1 className="h1-title">Upload</h1>
