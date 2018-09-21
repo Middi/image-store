@@ -6,7 +6,8 @@ import { ListView } from '../../components/ListView';
 export default class Home extends React.Component {
 
   state = {
-    modalIsOpen: false
+    modalIsOpen: false,
+    newUpload: false
   }
 
   handleModal = () => {
@@ -18,10 +19,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.modalIsOpen && <UploadForm closeModal={this.handleModal} />}
+        {this.state.modalIsOpen && <UploadForm newUpload={this.state.newUpload} closeModal={this.handleModal} />}
         <button onClick={this.handleModal}>Upload Image</button>
         <div className="container">
-        
         <ListView />
         </div>
       </React.Fragment>
