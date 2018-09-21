@@ -10,20 +10,18 @@
     align-items: center;
 }
 
-.modal {
+.login-modal {
     background-color: white;
     background-image: url('./img/upload-bg.png');
     background-repeat: no-repeat;
     background-position-x: right;
     background-size: contain;
-    width: 1000px;
-    height: 625px;
-    display: inherit;
-    justify-content: inherit;
-    align-items: inherit;
+    max-width: 1000px;
+    max-height: 625px;
     box-shadow: 0 10px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.12);
     position: relative;
     animation: fade-in .6s linear forwards;
+    padding: 140px;
 }
 
 .modal-close {
@@ -40,15 +38,8 @@
     color: #dddddd;
 }
 
-.form-container {
-    width: 770px;
-    display: inherit;
-    justify-content: space-between;
-    align-items: inherit;
-}
-
-.form-container-left {
-    width: 250px;
+.login-form-container {
+    max-width: 770px;
 }
 
 .h1-title {

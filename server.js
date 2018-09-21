@@ -3,14 +3,11 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 const items = require('./backend/routes/items');
+const upload = require('./backend/routes/upload');
 const cors = require('cors');
 const app = express();
 
-
-
-const Image = require('./backend/models/image');
-
-
+// Setup for CORS
 app.use(cors());
 
 // Bodyparser Middleware
@@ -24,18 +21,7 @@ const db = require('./keys').mongoURI;
 
 // Use Routes
 app.use('/api/items', items);
-
-// CREATE - Add new image to database
-app.post('/upload', (req, res) => {
-	const newImage = new Image({
-		image: req.body.image,
-		title: req.body.title,
-		description: req.body.description,
-        date: req.body.date
-    });
-    newImage.save().then(image => res.json(image));
-});
-
+app.use('/upload', upload)
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/frontend/build/index.html'));

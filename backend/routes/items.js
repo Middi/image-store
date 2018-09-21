@@ -4,23 +4,16 @@ const router = express.Router();
 // Item Model
 const Image = require('../models/image');
 
+// Get request
 router.get('/', (req, res) => {
     Image.find()
         .sort({ date: -1 })
         .then(items => res.json(items))
 });
 
-router.post('/', (req, res) => {
-    const newItem = new Item({
-        name: req.body.name,
-        date: req.body.date,
-        id: req.body.id
-    });
-    newItem.save().then(item => res.json(item));
-});
-
+// Delete request
 router.delete('/:id', (req, res) => {
-    Item.findOneAndRemove({ id: req.params.id },  function(err) {
+    Image.findOneAndRemove({ id: req.params.id },  function(err) {
         if (err)
             res.send(err);
         else

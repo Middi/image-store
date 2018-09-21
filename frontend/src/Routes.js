@@ -14,12 +14,6 @@ export class Routes extends React.Component {
       loginIsOpen: false
     }
   
-    // handleModal = () => {
-    //   this.setState({
-    //     modalIsOpen: !this.state.modalIsOpen
-    //   })
-    // }
-  
     loginModal = () => {
       this.setState({
         loginIsOpen: !this.state.loginIsOpen

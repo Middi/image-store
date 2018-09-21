@@ -33,12 +33,12 @@ export default class Login extends Component {
   render() {
     return (
       <div className="modal-bg">
-        <div className="modal">
+        <div className="login-modal">
           <span onClick={this.props.modalOpen} className="modal-close">+</span>
-          <div className="form-container">
-            <div className="form-container-left">
-              <h1 className="h1-title">Login</h1>
+          <div className="login-form-container">
               <div className="form">
+
+              <h1 className="h1-title">Login</h1>
 
                 <input type="text" name="username" onChange={e => this.handleChange(e.target)} className="form-input title" id="username" placeholder="Username" value={this.state.username} />
                 <input type="password" name="password" onChange={e => this.handleChange(e.target)}  className="form-input" id="password" placeholder="Password" value={this.state.password} />
@@ -48,9 +48,6 @@ export default class Login extends Component {
                     <button className="button btn-submit" onClick={this.submitFile}>Sign-Up</button>
                   </div>
               </div>
-            </div>
-            <div className="form-container-right">
-            </div>
           </div>
         </div>
 
