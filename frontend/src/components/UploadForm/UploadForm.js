@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import keys from "../../keys";
 import request from "superagent";
+import moment from 'moment';
 import "./UploadForm.css";
 
 let { CLOUDINARY_PRESET, CLOUDINARY_URL } = keys;
@@ -10,7 +11,8 @@ class UploadForm extends Component {
     title: '',
     description: '',
     fileToUpload: null,
-    uploadedFileUrl: null
+    uploadedFileUrl: null,
+    date: null
   };
 
   post(data) {
@@ -57,7 +59,8 @@ class UploadForm extends Component {
         });
 
         // Prepare data for post to database
-        const data = {...this.state};
+        const data = {...this.state, date: moment()};
+        console.log(data)
         delete data.fileToUpload;
         delete data.uploadedFileUrl;
         
