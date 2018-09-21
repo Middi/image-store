@@ -23,7 +23,6 @@ class UploadForm extends Component {
       }),
       body: JSON.stringify(data)
     });
-    this.props.closeModal();
   }
 
   handleChange = e => {

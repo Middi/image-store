@@ -7,12 +7,19 @@ export default class Home extends React.Component {
 
   state = {
     modalIsOpen: false,
-    newUpload: false
+    newUpload: false,
+    loginIsOpen: false
   }
 
   handleModal = () => {
     this.setState({
       modalIsOpen: !this.state.modalIsOpen
+    })
+  }
+
+  LoginModal = () => {
+    this.setState({
+      loginIsOpen: !this.state.loginIsOpen
     })
   }
 

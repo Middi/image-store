@@ -43,6 +43,7 @@ export default class ListView extends Component {
                       <img
                           src={image.image}
                           style={{width: "100%", display: "block"}}
+                          alt={image.title}
                       />
                       <div className="card-footer">
                         <h3 className="card-title">{image.title}</h3>

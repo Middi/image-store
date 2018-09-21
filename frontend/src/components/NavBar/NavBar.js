@@ -26,13 +26,10 @@ class NavBar extends Component {
           <nav className="nav">
             <ul>
               <li>
-                <Link to="/Home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/About">About</Link>
-              </li>
-              <li>
-                <Link to="/Results">Results</Link>
+                <a onClick={this.props.modalOpen}>Login</a>
               </li>
             </ul>
           </nav>
