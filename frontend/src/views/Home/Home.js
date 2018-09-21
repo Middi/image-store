@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
 import { UploadForm } from '../../components/UploadForm';
+import { ListView } from '../../components/ListView';
 
 export default class Home extends React.Component {
 
@@ -19,6 +20,8 @@ export default class Home extends React.Component {
       <React.Fragment>
         {this.state.modalIsOpen && <UploadForm closeModal={this.handleModal} />}
         <button onClick={this.handleModal}>Upload Image</button>
+
+        <ListView />
       </React.Fragment>
     );
   };

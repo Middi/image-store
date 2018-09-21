@@ -1,7 +1,8 @@
 header {
     width: 100%;
-    background-color: grey;
+    background-color: #026cfa;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-family: Helvetica, sans-serif;
 }
 
 .container-header {
@@ -14,8 +15,15 @@ header {
 }
 
 #logo h2 {
-    padding: 14px 15px;
     margin: 0;
+    padding: 11px 1.25rem;
+    color: white;
+    font-weight: 400;
+}
+
+.logo-span {
+    color: #caebff;
+    font-weight: 600;
 }
 
 
@@ -25,7 +33,7 @@ nav {
 
 ul {
   list-style-type: none;
-  padding: 12px 0;
+  padding: 0;
 }
 
 li {
@@ -35,10 +43,10 @@ li {
 li a {
   padding: 0 1.25rem;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
-li:hover a {color: rgba(0, 0, 0, 1)}
+li:hover a {color: #caebff}
 
 
 /* Mobile Toggle */
@@ -52,7 +60,7 @@ li:hover a {color: rgba(0, 0, 0, 1)}
 }
 
 #navToggle a {
-  color: lighten(black, 20);
+  color: white;
   display: block;
   font-size: 2em;
   font-weight: 200;
@@ -62,7 +70,7 @@ li:hover a {color: rgba(0, 0, 0, 1)}
   transition: 100ms all ease;
 }
 
-#navToggle:hover a {color: black}
+#navToggle:hover a {color: #caebff}
 
 .mobile-open {
     display: block;

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 // Item Model
-const Item = require('../models/items');
+const Image = require('../models/image');
 
 router.get('/', (req, res) => {
-    Item.find()
+    Image.find()
         .sort({ date: 1 })
         .then(items => res.json(items))
 });
