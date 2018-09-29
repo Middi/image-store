@@ -5,13 +5,18 @@ const bodyParser = require('body-parser');
 const items = require('./backend/routes/items');
 const upload = require('./backend/routes/upload');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 // Setup for CORS
 app.use(cors());
 
 // Bodyparser Middleware
+app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));

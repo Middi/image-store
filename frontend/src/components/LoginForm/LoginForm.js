@@ -5,7 +5,8 @@ import "./LoginForm.css";
 export default class Login extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    email: ''
   };
 
   post(data) {
@@ -41,6 +42,7 @@ export default class Login extends Component {
               <h1 className="h1-title">Login</h1>
 
                 <input type="text" name="username" onChange={e => this.handleChange(e.target)} className="form-input title" id="username" placeholder="Username" value={this.state.username} />
+                <input type="email" name="email" onChange={e => this.handleChange(e.target)} className="form-input email" id="email" placeholder="Email" value={this.state.email} />
                 <input type="password" name="password" onChange={e => this.handleChange(e.target)}  className="form-input" id="password" placeholder="Password" value={this.state.password} />
                   <div className="button-container">
 
