@@ -3,6 +3,7 @@ import keys from "../../keys";
 import request from "superagent";
 import moment from 'moment';
 import "./UploadForm.css";
+import { Spinner } from "../Spinner";
 
 let { CLOUDINARY_PRESET, CLOUDINARY_URL } = keys;
 
@@ -16,6 +17,7 @@ class UploadForm extends Component {
   };
 
   post(data) {
+    console.log(data);
     fetch("/upload", {
       method: "post",
       headers: new Headers({
@@ -102,7 +104,7 @@ class UploadForm extends Component {
               </div>
             </div>
             <div className="form-container-right">
-              {this.state.uploadedFileUrl ? <img className="preview-img" src={this.state.uploadedFileUrl} alt="placeholder" /> : ''}
+              {this.state.uploadedFileUrl ? <img className="preview-img" src={this.state.uploadedFileUrl} alt="placeholder" /> : <Spinner />}
             </div>
           </div>
         </div>

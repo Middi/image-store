@@ -4,10 +4,11 @@
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.12);
-    transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.17s;
 }
 
 .card:hover {
+    transform: translateY(-1px);
     box-shadow: 0 10px 28px rgba(0,0,0,0.15), 0 7px 10px rgba(0,0,0,0.12);
 }
 
